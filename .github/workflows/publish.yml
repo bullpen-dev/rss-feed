@@ -18,6 +18,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@octocat'
+      - run: npm version $(git rev-parse --short HEAD)
       - run: npm ci
       - run: npm publish --tag latest
         env:
