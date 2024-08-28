@@ -27,7 +27,7 @@ jobs:
           COMMIT_HASH=$(git rev-parse --short HEAD)
           NEW_VERSION="$CURRENT_VERSION-$COMMIT_HASH"
           npm version $NEW_VERSION --no-git-tag-version
-        run: npm publish --tag latest
+          npm publish --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - if: github.event_name == 'release'
