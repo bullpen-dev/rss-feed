@@ -21,6 +21,14 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@octocat'
       - run: npm ci
-      - run: npm publish
+      - name: Publish to GitHub Packages (latest)
+        if: github.event_name == 'push'
+        run: npm publish --tag latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to GitHub Packages (stable)
+        if: github.event_name == 'release'
+        run: npm publish --tag stable
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
