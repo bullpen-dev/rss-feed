@@ -1,3 +1,4 @@
+# publish a development and stable releases
 name: Publish package to GitHub Packages
 on:
   push:
