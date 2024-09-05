@@ -28,9 +28,9 @@ class RSS extends HTMLElement {
 			const itemsToRender = [...items].slice(0, postCount)
 
 			if (itemsToRender.length) {
-				this.innerHTML = itemsToRender.reduce((acc, item) => {
-					return acc + this.itemToHTML(item)
-				}, "")
+				this.innerHTML = itemsToRender
+					.map((item) => this.itemToHTML(item))
+					.join("<hr>");
 			} else {
 				console.log('No items found in the feed.')
 			}
@@ -65,7 +65,6 @@ class RSS extends HTMLElement {
 				${link ? `<a href="${link}" target="_blank">${hostname || 'source'}</a>` : `${hostname || 'source'}`}
 				${pubDate ? `<time datetime="${new Date(pubDate).toISOString()}">${formattedPubDate}</time>` : ''}
 				</small>
-				<hr>
 				`
 	}
 }
