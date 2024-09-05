@@ -40,4 +40,7 @@ Note the date string is localized based on `navigator.language` (ex. `en-US`)
 - you
 - [lite-youtube-embed](https://github.com/paulirish/lite-youtube-embed?tab=readme-ov-file)
 
+## help wanted
+- accesibility
+- what is the best way to distribute a single static JS file in 2024?
 
