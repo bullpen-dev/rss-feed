@@ -5,7 +5,7 @@ display RSS feed item(s) in plain HTML
 ## use
 
 ```html
-<script type="text/javascript" src="https://catskull.net/public/js/components/rss-feed.js"></script>
+<script type="text/javascript" src="https://catskull.net/public/js/components/rss-feed.js" async></script>
 <rss-feed url="https://mastodon.social/@dareelcatskull.rss" count="2"></rss-feed>
 ```
 
