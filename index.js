@@ -24,7 +24,7 @@ class RSS extends HTMLElement {
 			const parser = new DOMParser()
 			const xmlDoc = parser.parseFromString(data, "application/xml")
 
-			const items = xmlDoc.querySelectorAll('item') || xmlDoc.querySelectorAll('entry')
+			const items = [...xmlDoc.querySelectorAll('item'), ...xmlDoc.querySelectorAll('entry')]
 			const itemsToRender = [...items].slice(0, postCount)
 
 			if (itemsToRender.length) {
@@ -43,6 +43,7 @@ class RSS extends HTMLElement {
 		const title = item.querySelector('title')?.textContent
 		const linkElement = item.querySelector('link')
 		const link = linkElement?.getAttribute('href') || linkElement?.textContent
+		const content = item.querySelector('content')?.textContent
 		const description = item.querySelector('description')?.textContent || item.querySelector('summary')?.textContent
 		const pubDate = item.querySelector('pubDate')?.textContent || item.querySelector('updated')?.textContent
 		const hostname = link ? new URL(link).hostname : 'No hostname'
@@ -59,6 +60,7 @@ class RSS extends HTMLElement {
 
 		return `
 				${title ? `<h3>${title}</h3>` : ''}
+				${content ? content : ''}
 				${description ? `<div>${description}</div>` : ''}
 				${mediaUrl && mediaIsImage ? `<img src="${mediaUrl}" alt="${mediaDescription}"></img>` : ''}
 				<small>
