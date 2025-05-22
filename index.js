@@ -43,7 +43,6 @@ class RSS extends HTMLElement {
 		const title = item.querySelector('title')?.textContent
 		const linkElement = item.querySelector('link')
 		const link = linkElement?.getAttribute('href') || linkElement?.textContent
-		const content = item.querySelector('content')?.textContent
 		const description = item.querySelector('description')?.textContent || item.querySelector('summary')?.textContent
 		const pubDate = item.querySelector('pubDate')?.textContent || item.querySelector('updated')?.textContent
 		const hostname = link ? new URL(link).hostname : 'No hostname'
@@ -55,14 +54,14 @@ class RSS extends HTMLElement {
 		})
 		const mediaContent = item.querySelector('content')
 		const mediaIsImage = mediaContent?.getAttribute('medium') === 'image'
+        const textContent = item.querySelector('content')?.textContent
 		const mediaUrl = mediaContent?.getAttribute('url')
 		const mediaDescription = mediaContent?.querySelector(CSS.escape('description'))?.textContent
 
 		return `
 				${title ? `<h3>${title}</h3>` : ''}
-				${content ? content : ''}
 				${description ? `<div>${description}</div>` : ''}
-				${mediaUrl && mediaIsImage ? `<img src="${mediaUrl}" alt="${mediaDescription}"></img>` : ''}
+				${mediaUrl && mediaIsImage ? `<img src="${mediaUrl}" alt="${mediaDescription}"></img>` : textContent }
 				<small>
 				${link ? `<a href="${link}" target="_blank">${hostname || 'source'}</a>` : `${hostname || 'source'}`}
 				${pubDate ? `<time datetime="${new Date(pubDate).toISOString()}">${formattedPubDate}</time>` : ''}
