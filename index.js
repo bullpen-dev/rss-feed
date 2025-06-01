@@ -54,14 +54,14 @@ class RSS extends HTMLElement {
 		})
 		const mediaContent = item.querySelector('content')
 		const mediaIsImage = mediaContent?.getAttribute('medium') === 'image'
-        const textContent = item.querySelector('content')?.textContent
+    const textContent = item.querySelector('content')?.textContent
 		const mediaUrl = mediaContent?.getAttribute('url')
 		const mediaDescription = mediaContent?.querySelector(CSS.escape('description'))?.textContent
 
 		return `
 				${title ? `<h3>${title}</h3>` : ''}
 				${description ? `<div>${description}</div>` : ''}
-				${mediaUrl && mediaIsImage ? `<img src="${mediaUrl}" alt="${mediaDescription}"></img>` : textContent }
+				${mediaUrl && mediaIsImage ? `<img src="${mediaUrl}" alt="${mediaDescription}"></img>` : `${textContent ?? ''}` }
 				<small>
 				${link ? `<a href="${link}" target="_blank">${hostname || 'source'}</a>` : `${hostname || 'source'}`}
 				${pubDate ? `<time datetime="${new Date(pubDate).toISOString()}">${formattedPubDate}</time>` : ''}
