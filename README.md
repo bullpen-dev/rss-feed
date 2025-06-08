@@ -6,12 +6,12 @@ display RSS feed item(s) in plain HTML
 
 ```html
 <script type="text/javascript" src="https://catskull.net/public/js/components/rss-feed.js" async></script>
-<rss-feed url="https://mastodon.social/@dareelcatskull.rss" count="2"></rss-feed>
+<rss-feed url="https://mastodon.social/@dareelcatskull.rss"></rss-feed>
 ```
 
 output:
 ```html
-<rss-feed url="https://mastodon.social/@dareelcatskull.rss" count="2">
+<rss-feed url="https://mastodon.social/@dareelcatskull.rss">
   <div><p>what a time to be alive!</p></div>
   <small>
   <a href="https://mastodon.social/@dareelcatskull/113086020707228626" target="_blank">mastodon.social</a>
@@ -25,16 +25,40 @@ output:
   <time datetime="2024-09-05T16:58:14.000Z">September 5, 2024</time>
   </small>
   <hr>
+
+  <!-- ... -->
 </rss-feed>
 ```
 
 **attributes**
-- `url` (required): the url of the RSS/Atom feed
-- `count` (optional): how many items (newest to oldest) to display
+
+| name    | required | type   | description                  | default      |
+|---------|----------|--------|------------------------------|--------------|
+| `url`   | **yes**  | URL    | the url of the RSS/Atom feed | -            |
+| `count` | no       | number | max item quantity            | ∞ (infinite) |
+| `time`  | no       | bool   | show publication time        | `false`      |
+| `media` | no       | bool   | show media (images)          | `true`       |
 
 No style is applied. _It should look fine_.
 
+The items are arranged from newest to oldest.
+
 Note the date string is localized based on `navigator.language` (ex. `en-US`)
+
+**classes**
+
+You can use these classes to style your feed:
+
+| class               | description                                 |
+|---------------------|---------------------------------------------|
+| `.rf-item`          | main item wrapper                           |
+| `.rf-description`   | post content (for RSS)                      |
+| `.rf-content`       | post content (for Atom) & media wrapper     |
+| `.rf-content-text`  | post content (for Atom)                     |
+| `.rf-media`         | images                                      |
+| `.rf-meta`          | meta info wrapper                           |
+| `.rf-source`        | source link                                 |
+| `.rf-pubdate`       | publication date and/or time                |
 
 ## thanks
 - you
