@@ -12,20 +12,28 @@ display RSS feed item(s) in plain HTML
 output:
 ```html
 <rss-feed url="https://mastodon.social/@dareelcatskull.rss">
-  <div><p>what a time to be alive!</p></div>
-  <small>
-  <a href="https://mastodon.social/@dareelcatskull/113086020707228626" target="_blank">mastodon.social</a>
-  <time datetime="2024-09-05T17:02:15.000Z">September 5, 2024</time>
-  </small>
+  <div class="rf-item">
+    <div class="rf-description">
+      <p>what a time to be alive!</p>
+    </div>
+    <small class="rf-meta">
+      <a class="rf-source" href="https://mastodon.social/@dareelcatskull/113086020707228626" target="_blank">mastodon.social</a>
+      <time class="rf-pubdate" datetime="2024-09-05T17:02:15.000Z">September 5, 2024</time>
+    </small>
+  </div>
+
   <hr>
 
-  <div><p>wow you can edit tweets</p></div>
-  <small>
-  <a href="https://mastodon.social/@dareelcatskull/113086004893026159" target="_blank">mastodon.social</a>
-  <time datetime="2024-09-05T16:58:14.000Z">September 5, 2024</time>
-  </small>
-  <hr>
-
+  <div class="rf-item">
+    <div class="rf-description">
+      <p>wow you can edit tweets</p>
+    </div>
+    <small class="rf-meta">
+      <a class="rf-source" href="https://mastodon.social/@dareelcatskull/113086004893026159" target="_blank">mastodon.social</a>
+      <time class="rf-pubdate" datetime="2024-09-05T16:58:14.000Z">September 5, 2024</time>
+    </small>
+  </div>
+  
   <!-- ... -->
 </rss-feed>
 ```
